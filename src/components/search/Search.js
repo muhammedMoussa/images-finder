@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Results from '../results/Results';
 import axios from 'axios';
 
 import TextField from 'material-ui/TextField';
@@ -37,6 +38,20 @@ class Search extends Component {
   render() {
     return (
       <div>
+      <SelectField
+            name="number"
+            value={this.state.number}
+            floatingLabelText="Number of images"
+            style={{ padding: '10px' }}
+            onChange={this.onNumberChange}
+          >
+            <MenuItem value={5} primaryText="5" />
+            <MenuItem value={10} primaryText="10" />
+            <MenuItem value={15} primaryText="15" />
+            <MenuItem value={30} primaryText="30" />
+            <MenuItem value={50} primaryText="50" />
+          </SelectField>
+          <br />
         <TextField
           floatingLabelText="Search For Image!"
           style={{ padding: '20px' }}
@@ -46,21 +61,9 @@ class Search extends Component {
           fullWidth={true}
         />
         <br />
-        <center>
-          <SelectField
-            name="number"
-            value={this.state.number}
-            floatingLabelText="Number of images"
-            style={{ padding: '10px', width: '50%' }}
-            onChange={this.onNumberChange}
-          >
-            <MenuItem value={5} primaryText="5" />
-            <MenuItem value={10} primaryText="10" />
-            <MenuItem value={15} primaryText="15" />
-            <MenuItem value={30} primaryText="30" />
-            <MenuItem value={50} primaryText="50" />
-          </SelectField>
-        </center>
+        {this.state.images.length > 0 &&
+           <Results images={this.state.images} />
+        }
       </div>
     );
   }
