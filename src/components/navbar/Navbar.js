@@ -2,6 +2,6 @@ import React from 'react'
 import AppBar from 'material-ui/AppBar';
 
 const Navbar = () =>
-    <AppBar title="Images Finder" style={{background: '#f44336', textAlign: 'center'}}/>
+    <AppBar title="Images Finder" style={{ textAlign: 'center'}}/>
 
 export default Navbar
