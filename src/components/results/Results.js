@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
-import ZoomIn from 'material-ui/svg-icons/action/zoom-in';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import ZoomIn from 'material-ui/svg-icons/action/zoom-in';
+import Visibility from 'material-ui/svg-icons/action/visibility';
+import ThumbUp from 'material-ui/svg-icons/action/thumb-up';
+import Chat from 'material-ui/svg-icons/communication/chat';
 
 class Results extends Component {
   state = {
@@ -33,12 +36,22 @@ class Results extends Component {
               title={img.tags}
               key={img.id}
               subtitle={
-                <span>
-                  by <strong
-                      style={{cursor: 'pointer'}}
-                      onClick={ ()=> { window.open(`https://pixabay.com/users/${img.user}`) }}>
-                      {img.user} </strong>
-                </span>
+                <div>
+                  <span
+                    style={{cursor: 'pointer'}}
+                    onClick={ ()=> { window.open(`https://pixabay.com/users/${img.user}`) }}
+                  >
+                  by @{img.user}
+                  </span> <br />
+                  <span> <strong>{img.views}</strong> <Visibility color="white" /></span>
+                  <span> <strong>{img.likes}</strong> <ThumbUp color="white" /></span>
+                  <span> <strong>{img.comments}</strong> <Chat color="white" /></span>
+
+                  {/*<span>{img.views} view</span> <br />
+                  <span>{img.downloads} downloads</span> <br />
+                  <span>{img.likes} likes</span> <br />
+              <span>{img.comments} comments</span> <br />*/}
+                </div>
               }
               actionIcon={
                 <IconButton onClick={() => this.handleOpen(img.largeImageURL)}>
